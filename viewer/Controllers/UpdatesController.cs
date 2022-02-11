@@ -124,10 +124,6 @@ namespace viewer.Controllers
                 var details = JsonConvert.DeserializeObject<GridEvent<dynamic>>(e.ToString());
                 await this._hubContext.Clients.All.SendAsync(
                     "gridupdate",
-                    details.Id,
-                    details.EventType,
-                    details.Subject,
-                    details.EventTime.ToLongTimeString(),
                     e.ToString());
             }
 
@@ -141,10 +137,6 @@ namespace viewer.Controllers
 
             await this._hubContext.Clients.All.SendAsync(
                 "gridupdate",
-                details.Id,
-                details.Type,
-                details.Subject,
-                details.Time,
                 eventData.ToString()
             );
 
